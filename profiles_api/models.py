@@ -33,7 +33,7 @@ class UserProfileManager(BaseUserManager):
 
 class UserProfile (AbstractBaseUser, PermissionsMixin):
      """database model for users in the systems"""
-     emails = models.EmailField(max_length=255, unique=True)
+     email = models.EmailField(max_length=255, unique=True)
      name = models.CharField(max_length=255)
      is_active = models.BooleanField(default=True)
      is_staff = models.BooleanField(default=True)
@@ -41,7 +41,7 @@ class UserProfile (AbstractBaseUser, PermissionsMixin):
 
      objects = UserProfileManager()
 
-     USERNAME_FIELD = 'emails'
+     USERNAME_FIELD = 'email'
      REQUIRED_FIELDS = ['name']
 
      def get_full_name(self):
